@@ -117,6 +117,8 @@ body,
   fill: white !important;
   padding: 0 !important;
   margin: 0 !important;
+  margin-top: 0px !important;
+  padding-top: 3px !important;
   height: 30px !important;
 }
 
@@ -150,9 +152,7 @@ body,
 }
 
 .react-responsive-modal-closeButton:hover {
-  background-color: rgb(191, 214, 17);
-  border-radius: 50%;
-  fill: white;
+  background-color: rgb(191, 214, 17) !important;
 }
 
 
@@ -338,6 +338,18 @@ body,
 }
 
 @media screen and (max-width: 600px) {
+
+  .btn-refresh {
+    border: none !important;
+    background-color: #3f4646 !important;
+    box-shadow: none !important;
+    fill: white !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    margin-top: 2.5px !important;
+    padding-top: 3px !important;
+    height: 30px !important;
+  }
 
   .go-to-container {
     right: 60px;

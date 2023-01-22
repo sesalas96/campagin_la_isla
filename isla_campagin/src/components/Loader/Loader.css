@@ -34,8 +34,8 @@
 
 .loader-container-4 {
     position: sticky;
-    top: 20vh;
-    margin-left: 5vw;
+    top: 22vh;
+    margin-left: 15vw;
     height: 0 !important;
 }
 
@@ -85,14 +85,14 @@
 
 .earth-logo2:hover {
     /* Start the shake animation and make the animation last for 0.5 seconds */
-    animation: shake 20s ease-in-out infinite;
+    animation: shake 30s ease-in-out infinite;
     /* When the animation is finished, start again */
     animation-iteration-count: infinite;
 }
 
 @media (prefers-reduced-motion: no-preference) {
     .earth-logo2 {
-        animation: shake 20s ease-in-out infinite;
+        animation: shake 30s ease-in-out infinite;
     }
 }
 
@@ -144,7 +144,7 @@
     }
 
     60% {
-        transform: translate(-7px, 49px) rotate(0deg);
+        transform: translate(-7px, 29px) rotate(0deg);
     }
 
     70% {
@@ -152,7 +152,7 @@
     }
 
     80% {
-        transform: translate(-29px, -9px) rotate(1deg);
+        transform: translate(29px, 9px) rotate(1deg);
     }
 
     90% {
@@ -160,7 +160,7 @@
     }
 
     100% {
-        transform: translate(12px, -2px) rotate(-1deg);
+        transform: translate(15px, 2px) rotate(0deg);
     }
 }
 
