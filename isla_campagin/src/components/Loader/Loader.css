@@ -1,0 +1,151 @@
+.loader-container-1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 10vh;
+    width: 90vw;
+    min-width: 450px;
+    margin-right: 400px;
+}
+
+.loader-container-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    width: 90vw;
+    min-width: 450px;
+    margin-right: 400px;
+}
+
+.loader-container-3 {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 10vmin;
+    width: 90vw;
+    min-width: 450px;
+    margin-right: 400px;
+}
+
+.noBackground {
+    background-color: transparent !important
+}
+
+.bg-transparent {
+    height: 100%;
+    width: 100%;
+}
+
+.loader-container-1-adjusted {
+    height: 100%;
+    width: 100%;
+}
+
+.loader-txt {
+    margin-top: 5vmin;
+    color: rgba(255, 255, 255, 0.736);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .earth-logo {
+        animation: float 6s ease-in-out infinite;
+    }
+}
+
+.earth-logo {
+    height: 9vmin;
+    pointer-events: none;
+    filter: drop-shadow(0 0mm 11mm rgb(191, 214, 17));
+}
+
+.earth-logo:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: float 6s ease-in-out infinite;
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+.txt-loading {
+    margin-top: 200px;
+    color: rgba(255, 255, 255, 0.633);
+}
+
+@keyframes float {
+    0% {
+        filter: drop-shadow(0 -4mm 11mm rgba(0, 0, 0, 0.6));
+        transform: translatey(0px);
+    }
+
+    50% {
+        filter: drop-shadow(0 -4mm 11mm rgba(0, 0, 0, 0.6));
+        transform: translatey(-20px);
+    }
+
+    100% {
+        filter: drop-shadow(0 -4mm 11mm rgba(0, 0, 0, 0.6));
+        transform: translatey(0px);
+    }
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(29px, 29px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-29px, -2px) rotate(-5deg);
+    }
+
+    20% {
+        transform: translate(-7px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(7px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(9px, -29px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-29px, 2px) rotate(-5deg);
+    }
+
+    60% {
+        transform: translate(-7px, 49px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(7px, 39px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-29px, -9px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(19px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(12px, -2px) rotate(-1deg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+
+    .loader-container-1 {
+        height: 1vmin;
+    }
+
+    .earth-logo {
+        height: 30vmin;
+        margin-left: -50px;
+    }
+}

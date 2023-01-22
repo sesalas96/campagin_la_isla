@@ -1,0 +1,347 @@
+html,
+body,
+#root {
+  min-height: 100vh;
+  overflow: hidden;
+  scroll-behavior: smooth;
+  background-color: #282c34;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 15vmin;
+  pointer-events: none;
+  margin-bottom: 5vh;
+  filter: drop-shadow(0 -4mm 11mm rgb(119, 119, 119));
+}
+
+.app-img-holder {
+  height: 15vmin;
+  margin-bottom: 5vh;
+}
+
+.App-logo:hover {
+  /* Start the shake animation and make the animation last for 0.5 seconds */
+  animation: shake 10s;
+  /* When the animation is finished, start again */
+  animation-iteration-count: infinite;
+}
+
+.action-section {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  height: 35px;
+  width: auto;
+  gap: 10px;
+}
+
+.alert-txt {
+  font-size: .9em;
+  margin: 5px;
+}
+
+.Toastify__toast-container {
+  width: 500px !important;
+  bottom: 0 !important;
+}
+
+.location-btn {
+  background-color: transparent;
+  color: white;
+  display: flex;
+  align-items: center;
+  box-shadow: none;
+  border: none;
+  gap: 10px;
+  font-size: .7em;
+}
+
+.location-btn:hover {
+  color: rgb(191, 214, 17);
+}
+
+.react-responsive-modal-container {
+  background-color: rgba(3, 2, 2, 0.369) !important;
+  backdrop-filter: blur(1.5px);
+}
+
+.react-responsive-modal-modal {
+  border-radius: 30px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 70vw;
+  height: 80vh;
+  background-color: transparent !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.react-responsive-modal-modal::-webkit-scrollbar {
+  display: none;
+
+}
+
+.go-to-container {
+  position: absolute;
+  display: flex;
+  bottom: 20px;
+  right: 100px;
+  gap: 20px;
+  height: 50px;
+}
+
+.waze-btn {
+  background-color: #3f4646 !important;
+}
+
+.waze-btn:hover {
+  color: rgb(191, 214, 17) !important;
+}
+
+.google-btn {
+  background-color: rgb(191, 214, 17) !important;
+  color: black;
+}
+
+.google-btn:hover {
+  color: black !important;
+}
+
+.audio-btn {
+  border: none;
+  height: 30px;
+  padding: 0 !important;
+}
+
+.react-responsive-modal-closeButton:hover {
+  background-color: rgb(191, 214, 17);
+}
+
+@keyframes shake {
+  0% {
+    transform: translate(9px, 9px) rotate(0deg);
+  }
+
+  10% {
+    transform: translate(-9px, -2px) rotate(-1deg);
+  }
+
+  20% {
+    transform: translate(-7px, 0px) rotate(1deg);
+  }
+
+  30% {
+    transform: translate(7px, 2px) rotate(0deg);
+  }
+
+  40% {
+    transform: translate(9px, -9px) rotate(1deg);
+  }
+
+  50% {
+    transform: translate(-9px, 2px) rotate(-1deg);
+  }
+
+  60% {
+    transform: translate(-7px, 9px) rotate(0deg);
+  }
+
+  70% {
+    transform: translate(7px, 9px) rotate(-1deg);
+  }
+
+  80% {
+    transform: translate(-9px, -9px) rotate(1deg);
+  }
+
+  90% {
+    transform: translate(9px, 2px) rotate(0deg);
+  }
+
+  100% {
+    transform: translate(9px, 9px) rotate(0deg);
+  }
+}
+
+.main-header-title {
+  font-size: 1.5em;
+  display: flex;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.sect1-subtitle {
+  font-size: .8em;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.loading-wrapper {
+  height: 100vh;
+}
+
+.btn {
+  background-color: transparent;
+  box-shadow: none;
+  color: white;
+  height: 3.5em;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-family: sans-serif;
+  min-width: 50px;
+}
+
+.btn-primary {
+  border-color: rgb(191, 214, 17);
+}
+
+.btn-link {
+  border-color: transparent;
+  padding: 0;
+}
+
+.link-color {
+  color: #61dafb;
+  font-size: 1.4em;
+  text-decoration: underline;
+  margin-top: 5vh;
+}
+
+
+.btn-link:hover {
+  text-decoration: underline;
+  color: rgb(191, 214, 17);
+}
+
+.btns-container {
+  display: flex;
+  flex-direction: row;
+  gap: 2vh;
+  background-color: rgba(202, 199, 199, 0.1);
+  padding: 40px;
+  border-radius: 20px 50px;
+  margin-top: 1vh;
+}
+
+.btns-container:hover {
+  box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
+  -webkit-box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
+  -moz-box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
+}
+
+.warning {
+  color: rgb(191, 214, 17);
+  margin: 0;
+  margin-right: 10px;
+}
+
+::-moz-selection {
+  /* Code for Firefox */
+  background: transparent;
+}
+
+::selection {
+  background: transparent;
+}
+
+.Toastify__toast-theme--colored.Toastify__toast--warning {
+  background: rgb(191, 214, 17) !important;
+}
+
+.compass-img {
+  height: 30px;
+}
+
+.compass-img:hover {
+  fill: rgb(191, 214, 17) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: shake infinite 30s ease-in-out;
+  }
+}
+
+.general-actions-container {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 20px;
+  gap: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .main-header-title {
+    font-size: 1.5em;
+    max-width: 640px;
+  }
+
+  .btns-container {
+    flex-direction: row;
+    gap: 5vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .location-btn:hover {
+    color: inherit;
+  }
+
+  .link-color {
+    color: #61dafb;
+    font-size: 1em;
+    text-decoration: underline;
+    margin-left: -50px;
+  }
+
+  .react-responsive-modal-modal {
+    width: 85vw;
+  }
+
+  .compass-img {
+    height: 23px;
+  }
+
+  .Toastify__toast-container {
+    width: 100% !important;
+    bottom: 0 !important;
+  }
+
+  .main-header-title {
+    font-size: 1.5em;
+    max-width: 340px;
+  }
+
+  .btns-container {
+    flex-direction: column;
+  }
+
+  .btn:hover {
+    background-color: transparent;
+  }
+
+  .btns-container:hover {
+    box-shadow: none;
+  }
+}
