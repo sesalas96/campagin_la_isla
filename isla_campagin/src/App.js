@@ -32,7 +32,7 @@ const DEFAULTS_AUDIOS = [AMBIENTAL_1, AMBIENTAL_2];
 function App() {
   const appRef = useRef(false);
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
-  const [volume, setVolume] = useState(0.7);
+  const [volume, setVolume] = useState(0.2);
   const [zoomMap, setzoomMap] = useState(7);
   const [loading, setLoading] = useState(true);
   const [msgLocation, setMsgLocation] = useState('');
@@ -165,11 +165,10 @@ function App() {
                 <iframe
                   width="100%"
                   height="100%"
-                  src={`https://maps.google.com/maps?q=Las%20Isla%20de%20Moravia&t=&z=${zoomMap}&ie=UTF8&iwloc=&output=embed`}
+                  src={`https://maps.google.com/maps?q=XXC3+Q4W,%20San%20Jos%C3%A9%20Province,%20San%20Vicente,%20Costa%20Rica&t=&z=${zoomMap}&ie=UTF8&iwloc=&output=embed`}
                   frameborder="0"
                   marginheight="0"
                   marginwidth="0"
-                  onl
                 ></iframe>
                 <>150 mts al norte del salón</>
                 {showModalBtn ? (
@@ -188,7 +187,7 @@ function App() {
                       className="btn btn-primary google-btn"
                       onClick={() =>
                         handleGoTo(
-                          `https://maps.google.com/maps?q=Las%20Isla%20de%20Moravia&t=&z=17&ie=UTF8&iwloc=&output=embed`
+                          `https://www.google.com/maps/place/XXC3%2BQ4W+Salon+Comunal+de+la+Isla,+San+Jos%C3%A9+Province,+San+Vicente,+Costa+Rica/@9.9724185,-84.0464675,18z/data=!4m14!1m7!3m6!1s0x8fa0e45aa3293347:0xd790e4defe645815!2sXXC2%2BP2W+Urbanizaci%C3%B3n+Lomas+de+Moravia,+La+Isla,+San+Jos%C3%A9,+San+Vicente,+Costa+Rica!8m2!3d9.9718678!4d-84.0499374!16s%2Fg%2F11clr_jzkw!3m5!1s0x8fa0e44ff5286883:0xfb4084c1e5da7f90!8m2!3d9.9719751!4d-84.0471757!16s%2Fg%2F11cnbr17ws?hl=en-US&gl=US`
                         )
                       }
                     >

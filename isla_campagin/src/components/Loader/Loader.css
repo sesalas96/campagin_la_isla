@@ -33,9 +33,10 @@
 
 
 .loader-container-4 {
+    background-color: red;
     position: sticky;
-    top: 22vh;
-    margin-left: 15vw;
+    top: 30vh;
+    margin-left: 25vw;
     height: 0 !important;
 }
 
@@ -168,6 +169,14 @@
 
     .loader-container-1 {
         height: 1vmin;
+    }
+
+    .loader-container-4 {
+        position: absolute;
+        top: 30vh;
+        left: 20px;
+        margin-left: 5vw;
+        height: 0 !important;
     }
 
     .earth-logo {
