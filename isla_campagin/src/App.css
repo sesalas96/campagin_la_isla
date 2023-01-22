@@ -68,14 +68,23 @@ body,
 
 .react-responsive-modal-container {
   background-color: rgba(3, 2, 2, 0.369) !important;
-  backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(2px);
+}
+
+.card {
+  position: absolute;
+  top: 1.3vh;
+  right: 5.5vh;
+  border-radius: 10px;
+  height: 50px;
+  width: 60px;
 }
 
 .react-responsive-modal-modal {
-  border-radius: 30px !important;
+  border-radius: 20px !important;
   margin: 0 !important;
   padding: 0 !important;
-  width: 70vw;
+  width: 75vw;
   height: 80vh;
   background-color: transparent !important;
   -ms-overflow-style: none;
@@ -91,13 +100,28 @@ body,
   position: absolute;
   display: flex;
   bottom: 20px;
-  right: 100px;
+  right: 70px;
   gap: 20px;
   height: 50px;
+  z-index: 200000;
 }
 
 .waze-btn {
   background-color: #3f4646 !important;
+}
+
+.btn-refresh {
+  border: none !important;
+  background-color: #3f4646 !important;
+  box-shadow: none !important;
+  fill: white !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  height: 30px !important;
+}
+
+.btn-refresh:hover {
+  background-color: rgb(191, 214, 17) !important;
 }
 
 .waze-btn:hover {
@@ -119,9 +143,18 @@ body,
   padding: 0 !important;
 }
 
+.react-responsive-modal-closeButton {
+  fill: white;
+  background-color: #3f4646 !important;
+  border-radius: 50%;
+}
+
 .react-responsive-modal-closeButton:hover {
   background-color: rgb(191, 214, 17);
+  border-radius: 50%;
+  fill: white;
 }
+
 
 @keyframes shake {
   0% {
@@ -199,6 +232,7 @@ body,
 }
 
 .btn {
+  cursor: pointer;
   background-color: transparent;
   box-shadow: none;
   color: white;
@@ -223,6 +257,7 @@ body,
   font-size: 1.4em;
   text-decoration: underline;
   margin-top: 5vh;
+  cursor: pointer;
 }
 
 
@@ -303,6 +338,10 @@ body,
 }
 
 @media screen and (max-width: 600px) {
+
+  .go-to-container {
+    right: 60px;
+  }
 
   .location-btn:hover {
     color: inherit;

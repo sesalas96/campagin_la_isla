@@ -24,12 +24,19 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 10vmin;
-    width: 90vw;
-    min-width: 450px;
-    margin-right: 400px;
+    width: 20vw;
+    min-width: 150px;
+    margin-top: 100px;
+}
+
+
+.loader-container-4 {
+    position: sticky;
+    top: 20vh;
+    margin-left: 5vw;
+    height: 0 !important;
 }
 
 .noBackground {
@@ -51,12 +58,6 @@
     color: rgba(255, 255, 255, 0.736);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .earth-logo {
-        animation: float 6s ease-in-out infinite;
-    }
-}
-
 .earth-logo {
     height: 9vmin;
     pointer-events: none;
@@ -68,6 +69,31 @@
     animation: float 6s ease-in-out infinite;
     /* When the animation is finished, start again */
     animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .earth-logo {
+        animation: float 6s ease-in-out infinite;
+    }
+}
+
+.earth-logo2 {
+    height: 4vmin;
+    pointer-events: none;
+    filter: drop-shadow(0 0mm 11mm rgb(19, 19, 15));
+}
+
+.earth-logo2:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 20s ease-in-out infinite;
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .earth-logo2 {
+        animation: shake 20s ease-in-out infinite;
+    }
 }
 
 .txt-loading {
@@ -98,15 +124,15 @@
     }
 
     10% {
-        transform: translate(-29px, -2px) rotate(-5deg);
+        transform: translate(-19px, -2px) rotate(-5deg);
     }
 
     20% {
-        transform: translate(-7px, 0px) rotate(1deg);
+        transform: translate(-17px, 0px) rotate(10deg);
     }
 
     30% {
-        transform: translate(7px, 2px) rotate(0deg);
+        transform: translate(7px, 2px) rotate(-10deg);
     }
 
     40% {
@@ -147,5 +173,13 @@
     .earth-logo {
         height: 30vmin;
         margin-left: -50px;
+    }
+
+
+    .earth-logo2 {
+        height: 10vmin;
+        margin-left: 20px;
+        pointer-events: none;
+        filter: drop-shadow(0 0mm 11mm rgb(19, 19, 15));
     }
 }

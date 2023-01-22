@@ -20,6 +20,7 @@ import AMBIENTAL_1 from './assets/oggs/ambiental.ogg';
 import AMBIENTAL_2 from './assets/oggs/raining.ogg';
 import onAudioIcon from './assets/svgs/volume-off.svg';
 import offAudioIcon from './assets/svgs/volume-up.svg';
+import refreshIcon from './assets/svgs/refresh.svg';
 
 const DEFAULT_PAGES = ['INTRO', 'HOME', 'INFORMATION', 'ENROLLMENT', 'CONTACT_US'];
 const DEFAULT_BEHAVOIRS = ['CENTER', 'BOTTOM_RIGHT', 'LEFT_LONG_2DOWN', 'RIGHT_LONG_2UP'];
@@ -32,8 +33,9 @@ function App() {
   const appRef = useRef(false);
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
   const [volume, setVolume] = useState(0.7);
-  const [zoomMap, setzoomMap] = useState(10);
+  const [zoomMap, setzoomMap] = useState(7);
   const [loading, setLoading] = useState(true);
+  const [msgLocation, setMsgLocation] = useState('');
   const [play, setPlay] = useState(false);
   const [lang, setLang] = useState(false);
   const [intro, setIntro] = useState(true);
@@ -46,7 +48,7 @@ function App() {
   const notify = () => {
     setTimeout(() => {
       handleShowButtons();
-    }, 3000);
+    }, 1000);
     toast.warning(DEFAULT_ALERT, {
       position: 'bottom-right',
       autoClose: 5000,
@@ -79,19 +81,32 @@ function App() {
     };
   }, [play]);
 
+  const handleResfreshMap = () => {
+    setzoomMap(7);
+    setTimeout(() => {
+      setzoomMap(9);
+      setTimeout(() => {
+        setzoomMap(11);
+        setTimeout(() => {
+          setzoomMap(13);
+          setTimeout(() => {
+            setzoomMap(17);
+          }, 4000);
+        }, 4000);
+      }, 4000);
+    }, 4000);
+  };
+
   const handleShowSection = () => {
     const handleGoTo = (route) => {
+      handleShowButtons();
       handleToggleModal();
       window.open(route, '_blank');
     };
 
     switch (stage) {
       case DEFAULT_PAGES[0]:
-        return (
-          <div className="App-header">
-            <></>
-          </div>
-        );
+        return <div className="App-header" />;
       case DEFAULT_PAGES[1]:
         return (
           <div className="App-header">
@@ -133,7 +148,20 @@ function App() {
             </div>
             {open ? (
               <Modal open={open} onClose={handleToggleModal} center>
-                <Loader fit transparant placeholder="" behavoir={DEFAULT_BEHAVOIRS[2]} />
+                <Loader fit transparant placeholder="" behavoir={DEFAULT_BEHAVOIRS[3]} />
+                <div className="card">
+                  {zoomMap > 12 ? (
+                    <button
+                      title="Refresh map"
+                      className="btn btn-refresh"
+                      onClick={handleResfreshMap}
+                    >
+                      <img src={refreshIcon} alt="" />{' '}
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </div>
                 <iframe
                   width="100%"
                   height="100%"
@@ -143,9 +171,11 @@ function App() {
                   marginwidth="0"
                   onl
                 ></iframe>
+                <>150 mts al norte del salón</>
                 {showModalBtn ? (
                   <div className="go-to-container">
                     <button
+                      title="Drive with waze"
                       className="btn waze-btn"
                       onClick={() =>
                         handleGoTo('https://waze.com/ul?ll=9.972619,-84.045867&navigate=yes')
@@ -154,8 +184,13 @@ function App() {
                       Waze
                     </button>
                     <button
+                      title="Drive with google maps"
                       className="btn btn-primary google-btn"
-                      onClick={() => handleGoTo('waze')}
+                      onClick={() =>
+                        handleGoTo(
+                          `https://maps.google.com/maps?q=Las%20Isla%20de%20Moravia&t=&z=17&ie=UTF8&iwloc=&output=embed`
+                        )
+                      }
                     >
                       Google Maps
                     </button>
@@ -213,6 +248,28 @@ function App() {
   };
 
   useEffect(() => {
+    let ref;
+    if (showModalBtn) {
+      ref = setTimeout(() => {
+        setzoomMap(9);
+        setTimeout(() => {
+          setzoomMap(11);
+          setTimeout(() => {
+            setzoomMap(13);
+            setTimeout(() => {
+              setzoomMap(17);
+            }, 4000);
+          }, 4000);
+        }, 4000);
+      }, 4000);
+    } else {
+      setzoomMap(7);
+      clearInterval(ref);
+    }
+    return () => {};
+  }, [showModalBtn]);
+
+  useEffect(() => {
     if (appRef.current === false) {
       AOS.init({
         offset: 200,
@@ -224,7 +281,7 @@ function App() {
         setTimeout(() => {
           notify();
         }, 2000);
-      }, 3000);
+      }, 4000);
     }
     return () => {
       AOS.refresh();

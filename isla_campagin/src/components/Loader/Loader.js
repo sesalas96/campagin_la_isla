@@ -36,7 +36,7 @@ const Loader = ({
       case DEFAULT_BEHAVOIRS[2]:
         return 'loader-container-3';
       case DEFAULT_BEHAVOIRS[3]:
-        break;
+        return 'loader-container-4';
       default:
         return 'loader-container-1';
     }
@@ -48,7 +48,7 @@ const Loader = ({
         transparant && 'noBackground'
       }`}
     >
-      <img src={logo} className="earth-logo" alt="logo" />
+      <img src={logo} className={intro ? 'earth-logo' : 'earth-logo2'} alt="logo" />
       {intro ? (
         <button data-aos="flip-right" className="btn btn-link link-color" onClick={setStage}>
           Ver campaña de recolección de basura
