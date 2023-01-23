@@ -245,10 +245,66 @@ function App() {
             )}
           </div>
         );
-      case DEFAULT_PAGES[2]: // HOME
-        break;
-      case DEFAULT_PAGES[3]: // HOME
-        break;
+      case DEFAULT_PAGES[2]: // INFORMATION
+        return (
+          <div className="App-header">
+            <div className="action-section">
+              <button className="location-btn" onClick={() => handleGoToStage(DEFAULT_PAGES[1])}>
+                <img className="compass-img" src={leftIcon} alt="Go back to home" />
+                {t('goBack')}
+              </button>
+            </div>
+
+            <ToastContainer
+              position="bottom-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            <h1 data-aos="fade-right" className="main-header-title">
+              {t('generalInfo')}
+            </h1>
+            <div className="btns-container" data-aos={!isTablet ? 'zoom-out' : ''}>
+              <p>{t('inProgress')}</p>
+            </div>
+          </div>
+        );
+      case DEFAULT_PAGES[3]: // ENROLLMENT
+        return (
+          <div className="App-header">
+            <div className="action-section">
+              <button className="location-btn" onClick={() => handleGoToStage(DEFAULT_PAGES[1])}>
+                <img className="compass-img" src={leftIcon} alt="Go back to home" />
+                {t('goBack')}
+              </button>
+            </div>
+
+            <ToastContainer
+              position="bottom-center"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            <h1 data-aos="fade-right" className="main-header-title">
+              {t('calendarYourDate')}
+            </h1>
+            <div className="btns-container" data-aos={!isTablet ? 'zoom-out' : ''}>
+              <p>{t('inProgress')}</p>
+            </div>
+          </div>
+        );
       case DEFAULT_PAGES[4]: // CONTACT_US
         return (
           <div className="App-header">
@@ -278,65 +334,6 @@ function App() {
               <Persona userData={DEFAULT_SEBAS_SALAS} />
               <Persona userData={DEFAULT_DANIEL_BARQUERO} />
             </div>
-            {open ? (
-              <Modal open={open} onClose={handleToggleModal} center>
-                <Loader fit transparant placeholder="" behavoir={DEFAULT_BEHAVOIRS[3]} />
-                <div className="card">
-                  {zoomMap > 12 ? (
-                    <button
-                      title="Refresh map"
-                      className="btn btn-refresh"
-                      onClick={handleResfreshMap}
-                    >
-                      <img src={refreshIcon} alt="" />{' '}
-                    </button>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-                {zoomMap === 17 && loadRedZone ? (
-                  <div title="Zona afectada" className="card-red-zone" />
-                ) : (
-                  <></>
-                )}
-                <iframe
-                  width="100%"
-                  height="100%"
-                  src={`https://maps.google.com/maps?q=XXC3+Q4W,%20San%20Jos%C3%A9%20Province,%20San%20Vicente,%20Costa%20Rica&t=&z=${zoomMap}&ie=UTF8&iwloc=&output=embed`}
-                  frameborder="0"
-                  marginheight="0"
-                  marginwidth="0"
-                ></iframe>
-                {showModalBtn ? (
-                  <div className="go-to-container">
-                    <button
-                      title="Drive with waze"
-                      className="btn waze-btn"
-                      onClick={() =>
-                        handleGoTo('https://waze.com/ul?ll=9.972619,-84.045867&navigate=yes')
-                      }
-                    >
-                      Waze
-                    </button>
-                    <button
-                      title="Drive with google maps"
-                      className="btn btn-primary google-btn"
-                      onClick={() =>
-                        handleGoTo(
-                          `https://www.google.com/maps/place/XXC3%2BQ4W+Salon+Comunal+de+la+Isla,+San+Jos%C3%A9+Province,+San+Vicente,+Costa+Rica/@9.9724185,-84.0464675,18z/data=!4m14!1m7!3m6!1s0x8fa0e45aa3293347:0xd790e4defe645815!2sXXC2%2BP2W+Urbanizaci%C3%B3n+Lomas+de+Moravia,+La+Isla,+San+Jos%C3%A9,+San+Vicente,+Costa+Rica!8m2!3d9.9718678!4d-84.0499374!16s%2Fg%2F11clr_jzkw!3m5!1s0x8fa0e44ff5286883:0xfb4084c1e5da7f90!8m2!3d9.9719751!4d-84.0471757!16s%2Fg%2F11cnbr17ws?hl=en-US&gl=US`
-                        )
-                      }
-                    >
-                      Google Maps
-                    </button>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </Modal>
-            ) : (
-              <></>
-            )}
           </div>
         );
       default:

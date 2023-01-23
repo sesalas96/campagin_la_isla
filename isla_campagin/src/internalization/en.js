@@ -13,4 +13,7 @@ export const EN = {
   hosts: 'Hosts',
   sebasRole: 'Software Engineer, Neighbour',
   danielRole: 'Environmental Engineer, Municipal Environmental Comptroller of Moravia',
+  calendarYourDate: 'Book the dates',
+  inProgress: 'In progress',
+  generalInfo: 'Information',
 };
