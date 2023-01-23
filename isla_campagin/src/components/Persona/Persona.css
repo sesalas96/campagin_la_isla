@@ -1,6 +1,6 @@
 .avatar-wrapper {
   width: 400px;
-  height: auto;
+  height: 40vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -42,7 +42,7 @@
 .data-role {
   padding: 0;
   margin: 5px 0 15px 0;
-  height: 100px;
+  height: 50px;
   font-size: .7em;
   display: flex;
   align-items: center;
@@ -57,8 +57,8 @@
 
 @media screen and (max-width: 1200px) {
   .avatar-wrapper {
-    width: 30vw;
-    height: 50vh;
+    width: 34vw;
+    height: 30vh;
   }
 
   .avatar-img {
@@ -66,31 +66,32 @@
   }
 
   .data-role {
-    height: 90px;
+    height: 60px;
   }
 }
 
 @media screen and (max-width: 600px) {
   .avatar-wrapper {
     width: 60vw;
-    height: 33vh;
+    height: 25vh;
   }
 
   .avatar-img {
-    height: 22vmin;
+    height: 17vmin;
   }
 
   .data-img-container {
-    width: 90%;
+    width: 80%;
     height: 100%;
   }
 
   .data-extra {
     font-size: .9em;
+    margin: 2px 0;
   }
 
   .data-role {
-    height: 50px;
+    height: 40px;
     font-size: 1.2em;
   }
 }

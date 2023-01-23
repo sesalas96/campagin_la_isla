@@ -37,8 +37,8 @@ function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 720px)' });
   const isTablet = useMediaQuery({ query: '(max-width: 900px)' });
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
-  const [volume, setVolume] = useState(0.05);
-  const [zoomMap, setzoomMap] = useState(7);
+  const [volume, setVolume] = useState(0.5);
+  const [zoomMap, setZoomMap] = useState(7);
   const [loading, setLoading] = useState(true);
   const [loadRedZone, setloadRedZone] = useState(false);
   const [play, setPlay] = useState(false);
@@ -96,14 +96,14 @@ function App() {
   };
 
   const handleResfreshMap = () => {
-    setzoomMap(7);
+    setZoomMap(7);
     setTimeout(() => {
-      setzoomMap(11);
+      setZoomMap(11);
       setTimeout(() => {
-        setzoomMap(13);
+        setZoomMap(13);
         setTimeout(() => {
           handleShowPlaceInfo();
-          setzoomMap(17);
+          setZoomMap(17);
           setTimeout(() => {
             setloadRedZone(true);
           }, 1500);
@@ -387,9 +387,9 @@ function App() {
 
   const handleGoHome = () => {
     setStage(DEFAULT_PAGES[1]);
+    setAudio(DEFAULTS_AUDIOS[1]);
     setLoading(false);
     setIntro(false);
-    setAudio(DEFAULTS_AUDIOS[1]);
     handlePlayAudio();
     handleToggleAudio();
   };
@@ -412,13 +412,13 @@ function App() {
         handleShowPlaceInfo();
       }, 1000);
       ref = setTimeout(() => {
-        setzoomMap(9);
+        setZoomMap(9);
         setTimeout(() => {
-          setzoomMap(11);
+          setZoomMap(11);
           setTimeout(() => {
-            setzoomMap(13);
+            setZoomMap(13);
             setTimeout(() => {
-              setzoomMap(17);
+              setZoomMap(17);
               setTimeout(() => {
                 setloadRedZone(true);
               }, 1500);
@@ -427,7 +427,7 @@ function App() {
         }, 4000);
       }, 4000);
     } else {
-      setzoomMap(7);
+      setZoomMap(7);
       clearInterval(ref);
     }
     return () => {};

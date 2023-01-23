@@ -284,6 +284,7 @@ body,
   border-radius: 30px;
   font-family: sans-serif;
   min-width: 50px;
+  font-size: .7em;
 }
 
 .btn-primary {
@@ -423,7 +424,7 @@ body,
     fill: white !important;
     padding: 0 !important;
     margin: 0 !important;
-    margin-top: 2.5px !important;
+    margin-top: 0.5vh !important;
     padding-top: 3px !important;
     height: 30px !important;
   }

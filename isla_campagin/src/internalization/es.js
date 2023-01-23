@@ -14,6 +14,6 @@ export const ES = {
   sebasRole: 'Ingeniero en Computación, Vecino',
   danielRole: 'Ingeniero Ambiental, Contralor Ambiental Municipal de Moravia',
   calendarYourDate: 'Calendariza las fechas',
-  inProgress: 'En proceso',
+  inProgress: 'Por definir',
   generalInfo: 'Información',
 };
