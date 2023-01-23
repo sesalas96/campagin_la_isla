@@ -216,7 +216,7 @@ function App() {
                   marginwidth="0"
                 ></iframe>
                 {showModalBtn ? (
-                  <div className="go-to-container" data-aos="fade-up">
+                  <div className="go-to-container">
                     <button
                       title="Drive with waze"
                       className="btn waze-btn"

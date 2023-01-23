@@ -424,9 +424,10 @@ body,
     fill: white !important;
     padding: 0 !important;
     margin: 0 !important;
-    margin-top: 0.5vh !important;
+    margin-top: 0.8vh !important;
     padding-top: 3px !important;
     height: 30px !important;
+    margin-right: 20px !important;
   }
 
   .go-to-container {
