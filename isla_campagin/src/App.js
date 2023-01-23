@@ -271,7 +271,7 @@ function App() {
               pauseOnHover
               theme="light"
             />
-            <h1 data-aos="fade-down" className="main-header-title">
+            <h1 data-aos="fade-right" className="main-header-title">
               {t('hosts')}
             </h1>
             <div className="btns-container" data-aos={!isTablet ? 'zoom-out' : ''}>
