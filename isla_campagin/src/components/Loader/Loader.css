@@ -33,11 +33,11 @@
 
 
 .loader-container-4 {
-    background-color: red;
     position: sticky;
     top: 30vh;
     margin-left: 25vw;
     height: 0 !important;
+    z-index: 1000;
 }
 
 .noBackground {
@@ -174,8 +174,7 @@
     .loader-container-4 {
         position: absolute;
         top: 30vh;
-        left: 20px;
-        margin-left: 5vw;
+        left: 100px;
         height: 0 !important;
     }
 

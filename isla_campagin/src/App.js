@@ -27,6 +27,12 @@ const DEFAULT_BEHAVOIRS = ['CENTER', 'BOTTOM_RIGHT', 'LEFT_LONG_2DOWN', 'RIGHT_L
 const WAZE_APP_LINK = 'waze://?ll=9.972619,-84.045867&navigate=yes';
 const WAZE_WEB_LINK = 'waze://?ll=9.972619,-84.045867&navigate=yes';
 const DEFAULT_ALERT = <p className="alert-txt">{'Ayúdanos a recuperar la zona'}</p>;
+const DEFAULT_ALERT_2 = (
+  <p className="alert-txt">
+    {'150 mts este del Salón Comunal de la Isla de Moravia'}
+    <p className="alert-bold">{'Copiar dirección'}</p>
+  </p>
+);
 const DEFAULTS_AUDIOS = [AMBIENTAL_1, AMBIENTAL_2];
 
 function App() {
@@ -84,17 +90,15 @@ function App() {
   const handleResfreshMap = () => {
     setzoomMap(7);
     setTimeout(() => {
-      setzoomMap(9);
+      setzoomMap(11);
       setTimeout(() => {
-        setzoomMap(11);
+        setzoomMap(13);
         setTimeout(() => {
-          setzoomMap(13);
-          setTimeout(() => {
-            setzoomMap(17);
-          }, 4000);
+          handleShowPlaceInfo();
+          setzoomMap(17);
         }, 4000);
-      }, 4000);
-    }, 4000);
+      }, 3000);
+    }, 3000);
   };
 
   const handleShowSection = () => {
@@ -162,6 +166,7 @@ function App() {
                     <></>
                   )}
                 </div>
+                {zoomMap === 17 ? <div title="Zona afectada" className="card-red-zone" /> : <></>}
                 <iframe
                   width="100%"
                   height="100%"
@@ -246,9 +251,25 @@ function App() {
     x.pause();
   };
 
+  const handleShowPlaceInfo = () => {
+    toast.info(DEFAULT_ALERT_2, {
+      position: 'top-right',
+      autoClose: 12000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
+
   useEffect(() => {
     let ref;
     if (showModalBtn) {
+      setTimeout(() => {
+        handleShowPlaceInfo();
+      }, 16000);
       ref = setTimeout(() => {
         setzoomMap(9);
         setTimeout(() => {
