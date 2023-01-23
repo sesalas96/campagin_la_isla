@@ -42,10 +42,11 @@ body,
 }
 
 .alert-txt {
-  font-size: .9em;
+  display: flex;
+  align-items: center;
+  font-size: .8em;
   margin: 5px;
-  line-height: 10px;
-
+  line-height: 25px;
 }
 
 .alert-bold {
@@ -141,6 +142,10 @@ body,
   height: 30px !important;
 }
 
+.clipboard-icon {
+  margin: 0 10px;
+}
+
 .btn-refresh:hover {
   background-color: rgb(191, 214, 17) !important;
 }
@@ -152,6 +157,7 @@ body,
 .google-btn {
   background-color: rgb(191, 214, 17) !important;
   color: black;
+  min-width: 150px !important;
 }
 
 .google-btn:hover {
@@ -175,6 +181,9 @@ body,
 }
 
 .clipboard-btn {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
   border: none !important;
   padding: 0 !important;
   margin: 0 !important;
@@ -184,7 +193,8 @@ body,
   margin-left: 20px !important;
   line-height: 20px !important;
   height: 45px !important;
-  margin-bottom: -10px !important;
+  width: 200px !important;
+  margin-bottom: 0px !important;
 }
 
 
@@ -237,6 +247,7 @@ body,
 .main-header-title {
   font-size: 1.5em;
   display: flex;
+  justify-content: center;
   min-width: 300px;
   max-width: 700px;
 }
@@ -269,7 +280,7 @@ body,
   box-shadow: none;
   color: white;
   height: 3.5em;
-  padding: 15px 30px;
+  padding: 10px 20px;
   border-radius: 30px;
   font-family: sans-serif;
   min-width: 50px;
@@ -376,19 +387,34 @@ body,
     border-style: dotted;
     height: 70px;
   }
+
+  .btns-container {
+    padding: 35px;
+  }
 }
 
 @media screen and (max-width: 600px) {
+
+  .clipboard-btn {
+    width: 130px !important;
+  }
+
   .card-red-zone {
     position: absolute;
     top: 28vh;
-    left: 62vw;
+    left: 55vw;
     border-color: rgb(255, 255, 255);
     border-style: dotted;
     height: 70px;
     width: 60px;
   }
 
+  .google-btn {
+    background-color: rgb(191, 214, 17) !important;
+    color: black;
+    min-width: 105px !important;
+    padding: 0 !important;
+  }
 
   .btn-refresh {
     border: none !important;
@@ -419,7 +445,8 @@ body,
   }
 
   .react-responsive-modal-modal {
-    width: 85vw;
+    max-width: 10%;
+    overflow: hidden;
   }
 
   .compass-img {
@@ -438,6 +465,7 @@ body,
 
   .btns-container {
     flex-direction: column;
+    padding: 20px;
   }
 
   .btn:hover {

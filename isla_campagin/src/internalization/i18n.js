@@ -1,6 +1,8 @@
 import i18n from 'i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import { initReactI18next } from 'react-i18next';
+import { EN } from './en';
+import { ES } from './es';
 
 i18n
   .use(LanguageDetector)
@@ -9,22 +11,13 @@ i18n
     // we init with resources
     resources: {
       en: {
-        translations: {
-          'To get started, edit <1>src/App.js</1> and save to reload.':
-            'To get started, edit <1>src/App.js</1> and save to reload.',
-          'Welcome to React': 'Welcome to React and react-i18next',
-          welcome: 'Hello <br/> <strong>World</strong>',
-        },
+        translations: EN,
       },
       es: {
-        translations: {
-          'To get started, edit <1>src/App.js</1> and save to reload.':
-            'Starte in dem du, <1>src/App.js</1> editierst und speicherst.',
-          'Welcome to React': 'Willkommen bei React und react-i18next',
-        },
+        translations: ES,
       },
     },
-    fallbackLng: 'en',
+    fallbackLng: 'es',
     debug: true,
 
     // have a common namespace used around the full app

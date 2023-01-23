@@ -1,0 +1,16 @@
+export const EN = {
+  introTitle: 'See garbage collection campaign',
+  location: 'Location',
+  homeHeaderSubTitle: 'Garbage collection campaign',
+  homeHeaderTitle: 'Open Dumping',
+  allDetails: 'See all information',
+  enrollment: 'Sign up for the campaign',
+  contactUs: 'Contact Us',
+  helpAlert: 'Help us recover the area!',
+  address: '150 meters east of the Isla de Moravia Community Hall',
+  copy: 'Copy',
+  goBack: 'Back',
+  hosts: 'Hosts',
+  sebasRole: 'Software engineer, Neighbour',
+  danielRole: 'Environmental engineer, Municipal Environmental Comptroller of Moravia',
+};
