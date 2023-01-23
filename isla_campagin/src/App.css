@@ -288,7 +288,7 @@ body,
   color: #61dafb;
   font-size: 1.4em;
   text-decoration: underline;
-  margin-top: 5vh;
+  margin-top: 1vh;
   cursor: pointer;
 }
 
@@ -415,6 +415,7 @@ body,
     font-size: 1em;
     text-decoration: underline;
     margin-left: -50px;
+    margin-top: 0vh;
   }
 
   .react-responsive-modal-modal {

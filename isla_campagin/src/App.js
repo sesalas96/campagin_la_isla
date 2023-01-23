@@ -22,6 +22,7 @@ import onAudioIcon from './assets/svgs/volume-off.svg';
 import offAudioIcon from './assets/svgs/volume-up.svg';
 import refreshIcon from './assets/svgs/refresh.svg';
 import { ReactComponent as CLIPBOARD } from './assets/svgs/clipboard.svg';
+import { useMediaQuery } from 'react-responsive';
 
 const DEFAULT_PAGES = ['INTRO', 'HOME', 'INFORMATION', 'ENROLLMENT', 'CONTACT_US'];
 const DEFAULT_BEHAVOIRS = ['CENTER', 'BOTTOM_RIGHT', 'LEFT_LONG_2DOWN', 'RIGHT_LONG_2UP'];
@@ -46,6 +47,8 @@ const DEFAULTS_AUDIOS = [AMBIENTAL_1, AMBIENTAL_2];
 
 function App() {
   const appRef = useRef(false);
+  const isMobile = useMediaQuery({ query: '(max-width: 570px)' });
+  const isTablet = useMediaQuery({ query: '(max-width: 900px)' });
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
   const [volume, setVolume] = useState(0.2);
   const [zoomMap, setzoomMap] = useState(7);
@@ -148,13 +151,13 @@ function App() {
             ) : (
               <div className="app-img-holder" />
             )}
-            <h2 data-aos="fade-up" className="sect1-subtitle">
+            <h2 data-aos="fade-down" className="sect1-subtitle">
               Campaña de recolección de basura
             </h2>
-            <h1 data-aos="fade-up" className="main-header-title">
+            <h1 data-aos="fade-down" className="main-header-title">
               <p className="warning">⚠️</p>Botadero a cielo abierto
             </h1>
-            <div className="btns-container" data-aos="zoom-out">
+            <div className="btns-container" data-aos={!isTablet ? 'zoom-out' : ''}>
               <button className="btn">Ver toda la información</button>
               <button className="btn btn-primary">Inscribirme a la campaña</button>
               <button className="btn btn-link">Contáctenos</button>
