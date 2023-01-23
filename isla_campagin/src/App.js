@@ -4,7 +4,6 @@
 // swssw
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
-import { Support } from './containers';
 import { Loader, Persona } from './components';
 import logo from './assets/pngs/planeta_enfermo.png';
 import compass from './assets/svgs/compass.svg';
@@ -38,7 +37,7 @@ function App() {
   const isMobile = useMediaQuery({ query: '(max-width: 720px)' });
   const isTablet = useMediaQuery({ query: '(max-width: 900px)' });
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
-  const [volume, setVolume] = useState(0.4);
+  const [volume, setVolume] = useState(0.05);
   const [zoomMap, setzoomMap] = useState(7);
   const [loading, setLoading] = useState(true);
   const [loadRedZone, setloadRedZone] = useState(false);
@@ -56,7 +55,7 @@ function App() {
       </button>
     </p>
   );
-  const [audio, setAudio] = useState(DEFAULTS_AUDIOS[1]);
+  const [audio, setAudio] = useState(DEFAULTS_AUDIOS[0]);
   const [showModalBtn, setShowModalBtn] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -150,7 +149,6 @@ function App() {
                 <img className="compass-img" src={compass} alt="Ubicación" />
                 {t('location')}
               </button>
-              <Support language />
             </div>
 
             <ToastContainer
@@ -259,7 +257,6 @@ function App() {
                 <img className="compass-img" src={leftIcon} alt="Go back to home" />
                 {t('goBack')}
               </button>
-              <Support language />
             </div>
 
             <ToastContainer
@@ -350,7 +347,6 @@ function App() {
                 <img className="compass-img" src={compass} alt="Ubicación" />
                 {t('location')}
               </button>
-              <Support language />
             </div>
             <ToastContainer
               position="top-center"

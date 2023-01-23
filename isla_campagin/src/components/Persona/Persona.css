@@ -19,6 +19,7 @@
   border-radius: 50%;
   height: 9vmin;
   margin-left: -20px;
+  filter: drop-shadow(0 -2mm 6mm rgba(191, 214, 17, 0.3));
 }
 
 .data-img-container {
@@ -51,6 +52,7 @@
 .data-extra {
   padding: 0;
   margin: 5px 0 15px 0;
+  font-size: .7em;
 }
 
 @media screen and (max-width: 1200px) {
@@ -83,8 +85,12 @@
     height: 100%;
   }
 
+  .data-extra {
+    font-size: .9em;
+  }
+
   .data-role {
     height: 50px;
-    font-size: 1em;
+    font-size: 1.2em;
   }
 }

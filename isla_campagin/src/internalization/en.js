@@ -11,6 +11,6 @@ export const EN = {
   copy: 'Copy',
   goBack: 'Back',
   hosts: 'Hosts',
-  sebasRole: 'Software engineer, Neighbour',
-  danielRole: 'Environmental engineer, Municipal Environmental Comptroller of Moravia',
+  sebasRole: 'Software Engineer, Neighbour',
+  danielRole: 'Environmental Engineer, Municipal Environmental Comptroller of Moravia',
 };
