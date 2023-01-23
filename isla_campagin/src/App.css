@@ -44,6 +44,8 @@ body,
 .alert-txt {
   font-size: .9em;
   margin: 5px;
+  line-height: 10px;
+
 }
 
 .alert-bold {
@@ -170,6 +172,19 @@ body,
 
 .react-responsive-modal-closeButton:hover {
   background-color: rgb(191, 214, 17) !important;
+}
+
+.clipboard-btn {
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  font-size: 0.8em !important;
+  font-weight: 600 !important;
+  text-decoration: underline;
+  margin-left: 20px !important;
+  line-height: 20px !important;
+  height: 45px !important;
+  margin-bottom: -10px !important;
 }
 
 

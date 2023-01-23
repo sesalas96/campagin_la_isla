@@ -21,16 +21,25 @@ import AMBIENTAL_2 from './assets/oggs/raining.ogg';
 import onAudioIcon from './assets/svgs/volume-off.svg';
 import offAudioIcon from './assets/svgs/volume-up.svg';
 import refreshIcon from './assets/svgs/refresh.svg';
+import { ReactComponent as CLIPBOARD } from './assets/svgs/clipboard.svg';
 
 const DEFAULT_PAGES = ['INTRO', 'HOME', 'INFORMATION', 'ENROLLMENT', 'CONTACT_US'];
 const DEFAULT_BEHAVOIRS = ['CENTER', 'BOTTOM_RIGHT', 'LEFT_LONG_2DOWN', 'RIGHT_LONG_2UP'];
 const WAZE_APP_LINK = 'waze://?ll=9.972619,-84.045867&navigate=yes';
 const WAZE_WEB_LINK = 'waze://?ll=9.972619,-84.045867&navigate=yes';
 const DEFAULT_ALERT = <p className="alert-txt">{'Ayúdanos a recuperar la zona'}</p>;
+const DEFAULT_STRING_ALERT_2 = '150 mts este del Salón Comunal de la Isla de Moravia';
+async function handleClipboard(e) {
+  e.preventDefault();
+  navigator.clipboard.writeText(DEFAULT_STRING_ALERT_2);
+}
+
 const DEFAULT_ALERT_2 = (
   <p className="alert-txt">
-    {'150 mts este del Salón Comunal de la Isla de Moravia'}
-    <p className="alert-bold">{'Copiar dirección'}</p>
+    {DEFAULT_STRING_ALERT_2}
+    <button className="btn clipboard-btn" onClick={(e) => handleClipboard(e)}>
+      {'Copiar'}
+    </button>
   </p>
 );
 const DEFAULTS_AUDIOS = [AMBIENTAL_1, AMBIENTAL_2];
@@ -175,7 +184,6 @@ function App() {
                   marginheight="0"
                   marginwidth="0"
                 ></iframe>
-                <>150 mts al norte del salón</>
                 {showModalBtn ? (
                   <div className="go-to-container">
                     <button
@@ -254,7 +262,7 @@ function App() {
   const handleShowPlaceInfo = () => {
     toast.info(DEFAULT_ALERT_2, {
       position: 'top-right',
-      autoClose: 12000,
+      autoClose: 10000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -269,7 +277,7 @@ function App() {
     if (showModalBtn) {
       setTimeout(() => {
         handleShowPlaceInfo();
-      }, 16000);
+      }, 1000);
       ref = setTimeout(() => {
         setzoomMap(9);
         setTimeout(() => {
