@@ -73,21 +73,22 @@
 @media screen and (max-width: 600px) {
   .avatar-wrapper {
     width: 60vw;
-    height: 35vh;
+    height: 30vh;
   }
 
   .avatar-img {
     height: 17vmin;
+    margin-top: 30px;
   }
 
   .data-img-container {
-    width: 80%;
+    width: 90%;
     height: 100%;
   }
 
   .data-extra {
     font-size: .9em;
-    margin: 2px 0;
+    margin: 4px 0;
   }
 
   .data-role {

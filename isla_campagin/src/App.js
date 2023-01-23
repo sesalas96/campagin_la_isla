@@ -461,9 +461,18 @@ function App() {
         <></>
       )}
       <div className="general-actions-container">
-        <button className="btn audio-btn" id="btn-audio" onClick={handleToggleAudio} type="button">
-          <img src={!play ? onAudioIcon : offAudioIcon} alt="" />
-        </button>
+        {!isMobile ? (
+          <button
+            className="btn audio-btn"
+            id="btn-audio"
+            onClick={handleToggleAudio}
+            type="button"
+          >
+            <img src={!play ? onAudioIcon : offAudioIcon} alt="" />
+          </button>
+        ) : (
+          <></>
+        )}
         <button className="btn audio-btn" id="btn-audio" onClick={handleToggleLang} type="button">
           <p>{!lang ? 'EN' : 'ES'}</p>
         </button>
