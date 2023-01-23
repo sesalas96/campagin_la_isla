@@ -462,6 +462,7 @@ body,
   .main-header-title {
     font-size: 1.5em;
     max-width: 340px;
+    margin: 0;
   }
 
   .btns-container {
