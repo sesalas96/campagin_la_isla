@@ -391,7 +391,7 @@ function App() {
     setLoading(false);
     setIntro(false);
     handlePlayAudio();
-    handleToggleAudio();
+    setPlay(true);
   };
 
   useEffect(() => {
