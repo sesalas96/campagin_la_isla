@@ -32,13 +32,13 @@ const WAZE_APP_LINK = 'waze://?ll=9.972619,-84.045867&navigate=yes';
 const WAZE_WEB_LINK = 'https://waze.com/ul?ll=9.972619,-84.045867&navigate=yes';
 
 function App() {
+  const DEFAULT_VOLUMEN = 0.8;
   const { t, i18n } = useTranslation();
   const appRef = useRef(false);
   const isMobile = useMediaQuery({ query: '(max-width: 720px)' });
   const isTablet = useMediaQuery({ query: '(max-width: 900px)' });
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
-  const [volume, setVolume] = useState(0.5);
-  const [zoomMap, setZoomMap] = useState(7);
+  const [zoomMap, setZoomMap] = useState(17);
   const [loading, setLoading] = useState(true);
   const [loadRedZone, setloadRedZone] = useState(false);
   const [play, setPlay] = useState(false);
@@ -93,23 +93,6 @@ function App() {
   const handleToggleLang = () => {
     i18n.changeLanguage(lang ? 'en' : 'es');
     setLang((l) => !l);
-  };
-
-  const handleResfreshMap = () => {
-    setZoomMap(7);
-    setTimeout(() => {
-      setZoomMap(11);
-      setTimeout(() => {
-        setZoomMap(13);
-        setTimeout(() => {
-          handleShowPlaceInfo();
-          setZoomMap(17);
-          setTimeout(() => {
-            setloadRedZone(true);
-          }, 1500);
-        }, 4000);
-      }, 3000);
-    }, 3000);
   };
 
   const handleShowSection = () => {
@@ -189,24 +172,7 @@ function App() {
             {open ? (
               <Modal open={open} onClose={handleToggleModal} center>
                 <Loader fit transparant placeholder="" behavoir={DEFAULT_BEHAVOIRS[3]} />
-                <div className="card">
-                  {zoomMap > 12 ? (
-                    <button
-                      title="Refresh map"
-                      className="btn btn-refresh"
-                      onClick={handleResfreshMap}
-                    >
-                      <img src={refreshIcon} alt="" />{' '}
-                    </button>
-                  ) : (
-                    <></>
-                  )}
-                </div>
-                {zoomMap === 17 && loadRedZone ? (
-                  <div title="Zona afectada" className="card-red-zone" />
-                ) : (
-                  <></>
-                )}
+                {loadRedZone ? <div title="Zona afectada" className="card-red-zone" /> : <></>}
                 <iframe
                   width="100%"
                   height="100%"
@@ -406,31 +372,14 @@ function App() {
   }, [play]);
 
   useEffect(() => {
-    let ref;
     if (showModalBtn) {
       setTimeout(() => {
         handleShowPlaceInfo();
-      }, 1000);
-      ref = setTimeout(() => {
-        setZoomMap(9);
-        setTimeout(() => {
-          setZoomMap(11);
-          setTimeout(() => {
-            setZoomMap(13);
-            setTimeout(() => {
-              setZoomMap(17);
-              setTimeout(() => {
-                setloadRedZone(true);
-              }, 1500);
-            }, 4000);
-          }, 4000);
-        }, 4000);
-      }, 4000);
+        setloadRedZone(true);
+      }, 3000);
     } else {
-      setZoomMap(7);
-      clearInterval(ref);
+      setloadRedZone(false);
     }
-    return () => {};
   }, [showModalBtn]);
 
   useEffect(() => {
@@ -456,7 +405,13 @@ function App() {
   return (
     <div className="App">
       {audio ? (
-        <ReactAudioPlayer id="ambientalAudio" src={audio} volume={volume} loop title="ambiental" />
+        <ReactAudioPlayer
+          id="ambientalAudio"
+          src={audio}
+          volume={DEFAULT_VOLUMEN}
+          loop
+          title="ambiental"
+        />
       ) : (
         <></>
       )}
