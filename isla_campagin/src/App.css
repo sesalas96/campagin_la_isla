@@ -44,13 +44,13 @@ body,
 .alert-txt {
   display: flex;
   align-items: center;
-  font-size: .8em;
+  font-size: 0.8em;
   margin: 5px;
   line-height: 25px;
 }
 
 .alert-bold {
-  font-size: .9em;
+  font-size: 0.9em;
   font-weight: 700;
   margin: 5px;
 }
@@ -68,7 +68,7 @@ body,
   box-shadow: none;
   border: none;
   gap: 10px;
-  font-size: .7em;
+  font-size: 0.7em;
 }
 
 .location-btn:hover {
@@ -113,7 +113,6 @@ body,
 
 .react-responsive-modal-modal::-webkit-scrollbar {
   display: none;
-
 }
 
 .go-to-container {
@@ -197,7 +196,6 @@ body,
   margin-bottom: 0px !important;
 }
 
-
 @keyframes shake {
   0% {
     transform: translate(9px, 9px) rotate(0deg);
@@ -250,10 +248,12 @@ body,
   justify-content: center;
   min-width: 300px;
   max-width: 700px;
+  margin-bottom: 4vmin;
 }
 
 .sect1-subtitle {
-  font-size: .8em;
+  font-size: 0.8em;
+  margin-top: 20px;
 }
 
 .App-header {
@@ -284,7 +284,7 @@ body,
   border-radius: 30px;
   font-family: sans-serif;
   min-width: 50px;
-  font-size: .7em;
+  font-size: 0.7em;
 }
 
 .btn-primary {
@@ -303,7 +303,6 @@ body,
   margin-top: 1vh;
   cursor: pointer;
 }
-
 
 .btn-link:hover {
   text-decoration: underline;
@@ -395,7 +394,6 @@ body,
 }
 
 @media screen and (max-width: 600px) {
-
   .clipboard-btn {
     width: 130px !important;
   }
@@ -463,7 +461,6 @@ body,
   .main-header-title {
     font-size: 1.5em;
     max-width: 340px;
-    margin: 0;
   }
 
   .btns-container {
