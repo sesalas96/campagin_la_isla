@@ -1,7 +1,7 @@
 export const EN = {
-  introTitle: 'See garbage collection campaign',
+  introTitle: 'See garbage cleanup campaign',
   location: 'Location',
-  homeHeaderSubTitle: 'Garbage collection campaign',
+  homeHeaderSubTitle: 'Garbage cleanup campaign',
   homeHeaderTitle: 'Open Dumping',
   allDetails: 'See all information',
   enrollment: 'Sign up for the campaign',

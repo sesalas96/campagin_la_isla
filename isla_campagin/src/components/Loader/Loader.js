@@ -1,11 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import logo from '../../assets/pngs/planeta_enfermo.png';
+import thankful from '../../assets/svgs/thankful.svg';
+import sad from '../../assets/svgs/sad.svg';
+import searching from '../../assets/svgs/searching.svg';
+import impacted from '../../assets/svgs/impacted.svg';
+import mainLogo from '../../assets/pngs/planeta_enfermo.png';
 import PropTypes from 'prop-types';
 import './Loader.css';
 import { useTranslation } from 'react-i18next';
 
 const DEFAULT_BEHAVOIRS = ['CENTER', 'BOTTOM_RIGHT', 'LEFT_LONG_2DOWN', 'RIGHT_LONG_2UP'];
+const DEFAULT_TYPE_LOADER = ['SAD', 'IMPACTED', 'SEARCHING', 'THANKFUL'];
 
 const Loader = ({
   fit = false,
@@ -14,6 +19,7 @@ const Loader = ({
   behavoir = DEFAULT_BEHAVOIRS[2],
   intro = false,
   setStage,
+  type = 'SAD',
 }) => {
   const effectRan = useRef(false);
   const [ready, setReady] = useState(false);
@@ -44,13 +50,29 @@ const Loader = ({
 
   const { t } = useTranslation();
 
+  const typeSelector = () => {
+    const DEFAULT_TYPE_LOADER = ['SAD', 'IMPACTED', 'SEARCHING', 'THANKFUL'];
+    switch (type) {
+      case DEFAULT_TYPE_LOADER[0]:
+        return mainLogo;
+      case DEFAULT_TYPE_LOADER[1]:
+        return impacted;
+      case DEFAULT_TYPE_LOADER[2]:
+        return searching;
+      case DEFAULT_TYPE_LOADER[3]:
+        return thankful;
+      default:
+        return mainLogo;
+    }
+  };
+
   return ready ? (
     <div
       className={`${classSelector()} ${fit && 'loader-container-1-adjusted'} ${
         transparant && 'noBackground'
       }`}
     >
-      <img src={logo} className={intro ? 'earth-logo' : 'earth-logo2'} alt="logo" />
+      <img src={typeSelector()} className={intro ? 'earth-logo' : 'earth-logo2'} alt="logo" />
       {intro ? (
         <button data-aos="flip-right" className="btn btn-link link-color" onClick={setStage}>
           {t('introTitle')}

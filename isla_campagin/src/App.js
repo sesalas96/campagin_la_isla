@@ -5,9 +5,6 @@
 import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import { Loader, Persona } from './components';
-import logo from './assets/pngs/planeta_enfermo.png';
-import compass from './assets/svgs/compass.svg';
-import leftIcon from './assets/svgs/chevron-left.svg';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,11 +13,13 @@ import 'react-responsive-modal/styles.css';
 import { useTranslation } from 'react-i18next';
 import ReactAudioPlayer from 'react-audio-player';
 import { Modal } from 'react-responsive-modal';
+import logo from './assets/pngs/planeta_enfermo.png';
+import compass from './assets/svgs/compass.svg';
+import leftIcon from './assets/svgs/chevron-left.svg';
 import AMBIENTAL_1 from './assets/oggs/ambiental.ogg';
 import AMBIENTAL_2 from './assets/oggs/raining.ogg';
 import onAudioIcon from './assets/svgs/volume-off.svg';
 import offAudioIcon from './assets/svgs/volume-up.svg';
-import refreshIcon from './assets/svgs/refresh.svg';
 import clipboardIcon from './assets/svgs/clipboard.svg';
 import sebasImg from './assets/pngs/sebas.png';
 import danielImg from './assets/pngs/daniel.png';
@@ -171,12 +170,18 @@ function App() {
             </div>
             {open ? (
               <Modal open={open} onClose={handleToggleModal} center>
-                <Loader fit transparant placeholder="" behavoir={DEFAULT_BEHAVOIRS[3]} />
+                <Loader
+                  fit
+                  transparant
+                  placeholder=""
+                  behavoir={DEFAULT_BEHAVOIRS[3]}
+                  type="SEARCHING"
+                />
                 {loadRedZone ? <div title="Zona afectada" className="card-red-zone" /> : <></>}
                 <iframe
                   width="100%"
                   height="100%"
-                  src={`https://maps.google.com/maps?q=XXC3+Q4W,%20San%20Jos%C3%A9%20Province,%20San%20Vicente,%20Costa%20Rica&t=&z=${zoomMap}&ie=UTF8&iwloc=&output=embed`}
+                  src={`https://maps.google.com/maps?q=XXC3+Q4W,%20San%20Jos%C3%A9%20Province,%20San%20Vicente,%20Costa%20Rica&t=&z=17&ie=UTF8&iwloc=&output=embed`}
                   frameborder="0"
                   marginheight="0"
                   marginwidth="0"
@@ -443,6 +448,7 @@ function App() {
             placeholder="fff"
             intro={intro}
             setStage={handleGoHome}
+            type="SAD"
           />
         </div>
       )}

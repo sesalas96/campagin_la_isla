@@ -1,7 +1,7 @@
 export const ES = {
-  introTitle: 'Ver campaña de recolección de basura',
+  introTitle: 'Ver campaña de limpieza de basura',
   location: 'Ubicación',
-  homeHeaderSubTitle: 'Campaña de recolección de basura',
+  homeHeaderSubTitle: 'Campaña de limpieza de basura',
   homeHeaderTitle: 'Botadero a cielo abierto',
   allDetails: 'Ver toda la información',
   enrollment: 'Inscribirme en la campaña',
