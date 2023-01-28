@@ -126,7 +126,7 @@ function App() {
         return <div className="App-header" />;
       case DEFAULT_PAGES[1]: // HOME
         return (
-          <div className="App-header">
+          <div className="App-header" style={{ marginTop: '-5vh' }}>
             <div className="action-section">
               <button className="location-btn" onClick={handleToggleModal}>
                 <img className="compass-img" src={compass} alt="Ubicación" />
