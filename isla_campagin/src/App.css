@@ -34,7 +34,7 @@ body,
   display: flex;
   align-items: center;
   position: absolute;
-  top: 20px;
+  top: 21px;
   left: 30px;
   height: 35px;
   width: auto;
@@ -98,6 +98,11 @@ body,
   border-style: dotted;
   height: 70px;
   width: 70px;
+}
+
+.video-full {
+  width: 100vw;
+  height: 100vh;
 }
 
 .react-responsive-modal-modal {
@@ -291,6 +296,10 @@ body,
   border-color: rgb(191, 214, 17);
 }
 
+.btn-secondary {
+  background-color: rgb(191, 214, 17);
+}
+
 .btn-link {
   border-color: transparent;
   padding: 0;
@@ -309,6 +318,12 @@ body,
   color: rgb(191, 214, 17);
 }
 
+#map {
+  height: 100vh;
+  width: 100vw;
+  z-index: 10000;
+}
+
 .btns-container {
   display: flex;
   flex-direction: row;
@@ -319,7 +334,24 @@ body,
   margin-top: 1vh;
 }
 
+.btns-container-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  background-color: rgba(202, 199, 199, 0.1);
+  padding: 40px;
+  border-radius: 20px 50px;
+  margin-top: 5vh;
+  border: white 2px solid;
+}
+
 .btns-container:hover {
+  box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
+  -webkit-box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
+  -moz-box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
+}
+
+.btns-container-intro:hover {
   box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
   -webkit-box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
   -moz-box-shadow: 10px 10px 128px 5px rgba(161, 199, 161, 0.15);
@@ -350,6 +382,16 @@ body,
 
 .compass-img:hover {
   fill: rgb(191, 214, 17) !important;
+}
+
+.App-Main {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+}
+
+.main-img {
+  height: 10vmin;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -466,6 +508,11 @@ body,
   .btns-container {
     flex-direction: column;
     padding: 20px;
+  }
+
+  .btns-container-intro {
+    flex-direction: column;
+    padding: 40px;
   }
 
   .btn:hover {

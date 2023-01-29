@@ -1,4 +1,5 @@
 export const ES = {
+  allCampagins: 'Ir a campañas',
   introTitle: 'Ver campaña de limpieza de basura',
   location: 'Ubicación',
   homeHeaderSubTitle: 'Campaña de limpieza de basura',
@@ -16,4 +17,7 @@ export const ES = {
   calendarYourDate: 'Calendariza las fechas',
   inProgress: 'Por definir',
   generalInfo: 'Información',
+  agree: 'Acepto',
+  thoughts: 'Pensamientos Activistas',
+  headmap: 'Mapa de calor',
 };

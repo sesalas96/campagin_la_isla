@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/iframe-has-title */
@@ -10,10 +11,11 @@ import 'aos/dist/aos.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import 'react-responsive-modal/styles.css';
+import 'react-responsive-carousel/lib/styles/carousel.css';
 import { useTranslation } from 'react-i18next';
-import ReactAudioPlayer from 'react-audio-player';
 import { Modal } from 'react-responsive-modal';
 import logo from './assets/pngs/planeta_enfermo.png';
+import { getCookie, setCookie } from './utils/tools';
 import compass from './assets/svgs/compass.svg';
 import leftIcon from './assets/svgs/chevron-left.svg';
 import AMBIENTAL_1 from './assets/oggs/ambiental.ogg';
@@ -24,6 +26,8 @@ import clipboardIcon from './assets/svgs/clipboard.svg';
 import sebasImg from './assets/pngs/sebas.png';
 import danielImg from './assets/pngs/daniel.png';
 import { useMediaQuery } from 'react-responsive';
+import AudioPlayer from './components/audio/AudioPlayer';
+import videoPicking from './assets/videos/pickingUp.mp4';
 
 const DEFAULT_PAGES = ['INTRO', 'HOME', 'INFORMATION', 'ENROLLMENT', 'CONTACT_US'];
 const DEFAULT_BEHAVOIRS = ['CENTER', 'BOTTOM_RIGHT', 'LEFT_LONG_2DOWN', 'RIGHT_LONG_2UP'];
@@ -31,36 +35,46 @@ const WAZE_APP_LINK = 'waze://?ll=9.972619,-84.045867&navigate=yes';
 const WAZE_WEB_LINK = 'https://waze.com/ul?ll=9.972619,-84.045867&navigate=yes';
 
 function App() {
-  const DEFAULT_VOLUMEN = 0.8;
   const { t, i18n } = useTranslation();
   const appRef = useRef(false);
   const isMobile = useMediaQuery({ query: '(max-width: 720px)' });
   const isTablet = useMediaQuery({ query: '(max-width: 900px)' });
   const [stage, setStage] = useState(DEFAULT_PAGES[0]);
-  const [zoomMap, setZoomMap] = useState(17);
   const [loading, setLoading] = useState(true);
   const [loadRedZone, setloadRedZone] = useState(false);
-  const [play, setPlay] = useState(false);
   const [lang, setLang] = useState(i18n.language !== 'en');
   const [intro, setIntro] = useState(true);
   const DEFAULTS_AUDIOS = [AMBIENTAL_1, AMBIENTAL_2];
-  const DEFAULT_STRING_ALERT_2 = t('address');
+  const [play, setPlay] = useState(false);
+
   const DEFAULT_ALERT_2 = (
     <p className="alert-txt">
-      {DEFAULT_STRING_ALERT_2}
+      {t('address')}
       <button className="btn clipboard-btn" onClick={(e) => handleClipboard(e)}>
         <img className="clipboard-icon" src={clipboardIcon} alt="Copiar la dirección" />
         {t('copy')}
       </button>
     </p>
   );
+
+  const DEFAULT_ALERT_3 = (
+    <p className="textm-txt">
+      {t('address')}
+      <button className="btn clipboard-btn" onClick={(e) => handleToggleTerms(e)}>
+        {t('agree')}
+      </button>
+    </p>
+  );
   const [audio, setAudio] = useState(DEFAULTS_AUDIOS[0]);
   const [showModalBtn, setShowModalBtn] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openTerms, setOpenTerms] = useState(true);
+
+  const handleToggleTerms = () => {};
 
   async function handleClipboard(e) {
     e.preventDefault();
-    navigator.clipboard.writeText(DEFAULT_STRING_ALERT_2);
+    navigator.clipboard.writeText(t('address'));
   }
 
   const handleToggleModal = () => {
@@ -85,16 +99,12 @@ function App() {
     });
   };
 
-  const handleToggleAudio = () => {
-    setPlay((p) => !p);
-  };
-
   const handleToggleLang = () => {
     i18n.changeLanguage(lang ? 'en' : 'es');
     setLang((l) => !l);
   };
 
-  const handleShowSection = () => {
+  const Router = () => {
     const handleGoTo = (route) => {
       handleShowButtons();
       handleToggleModal();
@@ -121,12 +131,56 @@ function App() {
     };
 
     switch (stage) {
-      case DEFAULT_PAGES[0]: // INTRO
-        return <div className="App-header" />;
-      case DEFAULT_PAGES[1]: // HOME
+      case DEFAULT_PAGES[0]: // HOME
+        return (
+          <div className="App-header" style={{ marginTop: '-5vh' }}>
+            <Loader
+              fit
+              transparant
+              behavoir={DEFAULT_BEHAVOIRS[1]}
+              intro={intro}
+              type={!lang ? 'INTRO-LOGO-EN' : 'INTRO-LOGO-ES'}
+            />
+            <div className="btns-container-intro" data-aos="fade-up">
+              <button className="btn" onClick={() => handleGoToStage(DEFAULT_PAGES[1])}>
+                {t('allCampagins')}
+              </button>
+              <button className="btn btn-primary" onClick={() => handleGoToStage(DEFAULT_PAGES[3])}>
+                {t('thoughts')}
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => handleGoToStage(DEFAULT_PAGES[3])}
+              >
+                {t('headmap')}
+              </button>
+              <button className="btn btn-link" onClick={() => handleGoToStage(DEFAULT_PAGES[4])}>
+                {t('contactUs')}
+              </button>
+            </div>
+          </div>
+        );
+      case DEFAULT_PAGES[1]: // CAROUSEL
         return (
           <div className="App-header" style={{ marginTop: '-5vh' }}>
             <div className="action-section">
+              <button className="location-btn" onClick={() => handleGoToStage(DEFAULT_PAGES[0])}>
+                <img className="compass-img" src={leftIcon} alt="Go back to home" />
+              </button>
+              <button className="location-btn" onClick={handleToggleModal}>
+                <img className="compass-img" src={compass} alt="Ubicación" />
+                {t('location')}
+              </button>
+            </div>
+          </div>
+        );
+      case DEFAULT_PAGES[2]: // HOME
+        return (
+          <div className="App-header" style={{ marginTop: '-5vh' }}>
+            <div className="action-section">
+              <button className="location-btn" onClick={() => handleGoToStage(DEFAULT_PAGES[0])}>
+                <img className="compass-img" src={leftIcon} alt="Go back to home" />
+              </button>
               <button className="location-btn" onClick={handleToggleModal}>
                 <img className="compass-img" src={compass} alt="Ubicación" />
                 {t('location')}
@@ -216,7 +270,7 @@ function App() {
             )}
           </div>
         );
-      case DEFAULT_PAGES[2]: // INFORMATION
+      case DEFAULT_PAGES[3]: // INFORMATION
         return (
           <div className="App-header">
             <div className="action-section">
@@ -246,7 +300,7 @@ function App() {
             </div>
           </div>
         );
-      case DEFAULT_PAGES[3]: // ENROLLMENT
+      case DEFAULT_PAGES[4]: // ENROLLMENT
         return (
           <div className="App-header">
             <div className="action-section">
@@ -271,12 +325,12 @@ function App() {
             <h1 data-aos="fade-right" className="main-header-title">
               {t('calendarYourDate')}
             </h1>
-            <div className="btns-container" data-aos={!isTablet ? 'zoom-out' : ''}>
+            <div className="btns-container">
               <p>{t('inProgress')}</p>
             </div>
           </div>
         );
-      case DEFAULT_PAGES[4]: // CONTACT_US
+      case DEFAULT_PAGES[5]: // CONTACT_US
         return (
           <div className="App-header">
             <div className="action-section">
@@ -301,7 +355,7 @@ function App() {
             <h1 data-aos="fade-right" className="main-header-title">
               {t('hosts')}
             </h1>
-            <div className="btns-container" data-aos={!isTablet ? 'zoom-out' : ''}>
+            <div className="btns-container">
               <Persona userData={DEFAULT_SEBAS_SALAS} />
               <Persona userData={DEFAULT_DANIEL_BARQUERO} />
             </div>
@@ -333,16 +387,6 @@ function App() {
     }
   };
 
-  const handlePlayAudio = () => {
-    const x = document.getElementById('ambientalAudio');
-    x.play();
-  };
-
-  const handleStopAudio = () => {
-    const x = document.getElementById('ambientalAudio');
-    x.pause();
-  };
-
   const handleShowPlaceInfo = () => {
     toast.info(DEFAULT_ALERT_2, {
       position: 'bottom-right',
@@ -354,6 +398,29 @@ function App() {
       progress: undefined,
       theme: 'colored',
     });
+  };
+
+  const handleShowTerms = () => {
+    toast.info(DEFAULT_ALERT_2, {
+      position: 'bottom-right',
+      autoClose: 10000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'colored',
+    });
+  };
+
+  const handlePlayAudio = () => {
+    const x = document?.getElementById('ambientalAudio');
+    x?.play();
+  };
+
+  const handleStopAudio = () => {
+    const x = document?.getElementById('ambientalAudio');
+    x?.pause();
   };
 
   const handleGoHome = () => {
@@ -378,10 +445,6 @@ function App() {
 
   useEffect(() => {
     if (showModalBtn) {
-      setTimeout(() => {
-        handleShowPlaceInfo();
-        setloadRedZone(true);
-      }, 3000);
     } else {
       setloadRedZone(false);
     }
@@ -390,10 +453,10 @@ function App() {
   useEffect(() => {
     if (appRef.current === false) {
       AOS.init({
-        offset: 200,
+        offset: 100,
         duration: 600,
         easing: 'ease-in-sine',
-        delay: 100,
+        delay: 30,
       });
       setTimeout(() => {
         setTimeout(() => {
@@ -407,51 +470,30 @@ function App() {
     };
   }, []);
 
-  return (
-    <div className="App">
-      {audio ? (
-        <ReactAudioPlayer
-          id="ambientalAudio"
-          src={audio}
-          volume={DEFAULT_VOLUMEN}
-          loop
-          title="ambiental"
-        />
+  const handleToggleAudio = () => {
+    setPlay((p) => !p);
+  };
+
+  const HeaderActions = () => (
+    <div className="general-actions-container">
+      <AudioPlayer src={audio} />
+      {!isMobile ? (
+        <button className="btn audio-btn" id="btn-audio" onClick={handleToggleAudio} type="button">
+          <img src={!play ? onAudioIcon : offAudioIcon} alt="" />
+        </button>
       ) : (
         <></>
       )}
-      <div className="general-actions-container">
-        {!isMobile ? (
-          <button
-            className="btn audio-btn"
-            id="btn-audio"
-            onClick={handleToggleAudio}
-            type="button"
-          >
-            <img src={!play ? onAudioIcon : offAudioIcon} alt="" />
-          </button>
-        ) : (
-          <></>
-        )}
-        <button className="btn audio-btn" id="btn-audio" onClick={handleToggleLang} type="button">
-          <p>{!lang ? 'EN' : 'ES'}</p>
-        </button>
-      </div>
-      {!loading ? (
-        handleShowSection()
-      ) : (
-        <div className="loading-wrapper">
-          <Loader
-            fit
-            transparant
-            behavoir={DEFAULT_BEHAVOIRS[1]}
-            placeholder="fff"
-            intro={intro}
-            setStage={handleGoHome}
-            type="SAD"
-          />
-        </div>
-      )}
+      <button className="btn audio-btn" id="btn-audio" onClick={handleToggleLang} type="button">
+        <p>{!lang ? 'EN' : 'ES'}</p>
+      </button>
+    </div>
+  );
+
+  return (
+    <div className="App">
+      <HeaderActions />
+      <Router />
     </div>
   );
 }

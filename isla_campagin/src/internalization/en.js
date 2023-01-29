@@ -1,4 +1,5 @@
 export const EN = {
+  allCampagins: 'Go to active campagins',
   introTitle: 'See garbage cleanup campaign',
   location: 'Location',
   homeHeaderSubTitle: 'Garbage cleanup campaign',
@@ -16,4 +17,7 @@ export const EN = {
   calendarYourDate: 'Book the dates',
   inProgress: 'In progress',
   generalInfo: 'Information',
+  agree: 'I agree',
+  thoughts: 'Activist Thoughts',
+  headmap: 'Mapa de calor',
 };
